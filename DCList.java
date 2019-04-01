@@ -9,9 +9,9 @@
      }
      return false;
   }
-
+  //Intendation!
   public void display() {
-		
+		//This does not work properly, because you print the memory reference as a String. What you want is the actual value as a String.
 	 for(Node <H> i=head; i!= null; i=i.getNextNode()) {
 	 System.out.print(i.toString());
 	 }
