@@ -1,21 +1,22 @@
     
   public class DCList<H> {
 	
-	private Node <H> head;
+  private Node <H> head;
 		
   public boolean isEmpty() {
-     if(head == null) { 
-     return true;
-     }
-     return false;
+     
+	 if(head == null) { 
+        return true;
+      }
+        return false;
   }
-  //Intendation!
+
   public void display() {
-		//This does not work properly, because you print the memory reference as a String. What you want is the actual value as a String.
-	 for(Node <H> i=head; i!= null; i=i.getNextNode()) {
-	 System.out.print(i.toString());
-	 }
 		
+	 for(Node <H> i=head; i!= null; i=i.getNextNode()) {
+	 System.out.print("[" +i.getValue() + "]");
+	  }
+	 System.out.println();
   }
   
   public void add(int position, Node<H> value) {
@@ -25,7 +26,7 @@
       value.setNextNode(head);
       head.setPrevious(value);
       head = value;
-      } 
+       } 
       Node<H> oldNode = get(position);
       oldNode.getPreviousNode().setNextNode(value);
       value.setPrevious(oldNode.getPreviousNode());
@@ -34,8 +35,8 @@
       value.position= position;
       for(Node<H> i =value.getNextNode(); i!=null; i=i.getNextNode()) {
       i.position ++;
-      }
-      }
+       }
+    }
   }
   public void add(Node<H> value) {
     
@@ -44,39 +45,39 @@
       Node<H> last = get(size()-1);
       last.setNextNode(value);
       value.setPrevious(last);
-      }else {
+      } else {
       head = value;
-      }
+       }
       value.position=position;
-      }
+  }
   public void remove(Node<H> value) {
       
 	  if(value != null && value.position>=0 && value.position<size()-1  ) {
       value.getNextNode().setPrevious(value.getPreviousNode());
       value.getPreviousNode().setNextNode(value.getNextNode());
       }
-	  }
+  }
   public void removeFirst() {
       
 	  if(head != null) {
       if(size()>=2) {
       head = head.getNextNode();
       head.setPrevious(null);
-      }else if(size() == 1) {
+      } else if(size() == 1) {
       clear();
-      }else {
+      } else {
       System.out.println("Empty List");
-      }
-      }
+       }
+    }
   }
   public void removeLast() {
       
 	  if(size()>=2) {
       Node<H> c =get(size()-2);
       c.setNextNode(null);
-      }else if(size()==1) {
+      } else if(size()==1) {
       clear();
-      }else{
+      } else{
     	  System.out.println("Empty List");
       }
   }
@@ -99,27 +100,27 @@
       if(i.position == position) {
       break;
       }
-   }
+    }
       return i;
-}
+  }
   public int find(H value) {
       
 	  for( Node<H> i=head; i!=null; i=i.getNextNode()) {
       if(i.getValue()==value) {
       return i.position;
-   	  }
-      }
+   	    }
+     }
       return -1;
-      }
+  }
   public boolean contains(H value) {
       
 	  for(Node<H> i=head; i!=null; i=i.getNextNode()) {
       if(i.getValue()==value) {
       return true;
       }
-      }
+    }
 	  return false;
-	  }
+  }
   public int size() {
       int x=0;
       for(Node<H> i=head; i!=null; i=i.getNextNode()) {

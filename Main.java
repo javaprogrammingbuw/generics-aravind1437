@@ -9,8 +9,6 @@ public class Main {
 		list.add(new Node<>(new String("I")));
 		System.out.println(list.size());
 		System.out.println(list.getFirst().getValue());
-		//Why getClass?
-		list.getClass();
 		list.display();
 		System.out.println(list.getLast().getValue());
 		list.removeLast();
